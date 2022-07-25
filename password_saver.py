@@ -20,13 +20,11 @@ title_ls.grid(column=1, row=2, columnspan=2)
 name_text_ls = Label(login_screen, text='Username:', bg=BLUE, font=(FONT_NAME, 12))
 name_text_ls.grid(column=1, row=3)
 
-name_entry_ls = Entry(login_screen)
 name_entry_ls.grid(column=2, row=3)
 
 password_text_ls = Label(login_screen, text='Password:', bg=BLUE, font=(FONT_NAME, 12))
 password_text_ls.grid(column=1, row=4)
 
-password_entry_ls = Entry(login_screen)
 password_entry_ls.grid(column=2, row=4)
 
 log_button_ls = Button(login_screen, text='Login', highlightthickness=0, command=ba.login_button)
@@ -39,7 +37,7 @@ blankspace1_ls.grid(column=1, row=6)
 create_acc_text_ls = Label(login_screen, text='Dont have an account?', bg=BLUE, font=(FONT_NAME, 8))
 create_acc_text_ls.grid(column=1, row=7)
 
-create_acc_button_ls = Button(login_screen, text='Click Here', highlightthickness=0, font=(FONT_NAME, 8), command=ba.create_acc_button)
+create_acc_button_ls = Button(login_screen, text='Click Here', highlightthickness=0, font=(FONT_NAME, 8), command=ba.create_acc_button_click_here)
 create_acc_button_ls.grid(column=2, row=7)
 
 
@@ -56,19 +54,16 @@ title_cs.grid(column=1, row=2, columnspan=2)
 name_text_cs = Label(create_screen, text='Username:', bg=BLUE, font=(FONT_NAME, 12))
 name_text_cs.grid(column=1, row=3)
 
-name_entry_cs = Entry(create_screen)
 name_entry_cs.grid(column=2, row=3)
 
 password_text_cs = Label(create_screen, text='Password:', bg=BLUE, font=(FONT_NAME, 12))
 password_text_cs.grid(column=1, row=4)
 
-password_entry_cs = Entry(create_screen)
 password_entry_cs.grid(column=2, row=4)
 
 password_text_confirm_cs = Label(create_screen, text='Confirm Pass:', bg=BLUE, font=(FONT_NAME, 12))
 password_text_confirm_cs.grid(column=1, row=5)
 
-password_entry_confirm_cs = Entry(create_screen)
 password_entry_confirm_cs.grid(column=2, row=5)
 
 # Blank Space
@@ -79,7 +74,7 @@ blankspace1_cs.grid(column=1, row=6)
 back_button = Button(create_screen, text='Return', highlightthickness=0, font=(FONT_NAME, 8), command=ba.return_button)
 back_button.grid(column=1, row=7)
 
-create_acc_button = Button(create_screen, text='Create Account', highlightthickness=0, font=(FONT_NAME, 8))
+create_acc_button = Button(create_screen, text='Create Account', highlightthickness=0, font=(FONT_NAME, 8), command=ba.create_account_button)
 create_acc_button.grid(column=2, row=7)
 
 
@@ -100,7 +95,6 @@ logout_button_ms.grid(column=3, row=1, sticky='nw')
 search_text_ms = Label(main_screen, text='Search Password:', bg=BLUE, font=(FONT_NAME, 12))
 search_text_ms.grid(column=1, row=3)
 
-search_entry_ms = Entry(main_screen, width=25)                     # THIS NEEDS TO BE A DROP DOWN IN THE FUTURE
 search_entry_ms.grid(column=2, row=3, columnspan=2)
 
 search_button_ms = Button(main_screen, text='Search')
@@ -116,31 +110,26 @@ title2_ms.grid(column=2, row=6)
 website_text_ms = Label(main_screen, text='Website:', bg=BLUE, font=(FONT_NAME, 12))
 website_text_ms.grid(column=1, row=7)
 
-website_entry_ms = Entry(main_screen)
 website_entry_ms.grid(column=2, row=7, columnspan=2)
 
 email_text_ms = Label(main_screen, text='Email:', bg=BLUE, font=(FONT_NAME, 12))
 email_text_ms.grid(column=1, row=8)
 
-website_entry_ms = Entry(main_screen)
-website_entry_ms.grid(column=2, row=8, columnspan=2)
+email_entry_ms.grid(column=2, row=8, columnspan=2)
 
 name_text_ms = Label(main_screen, text='Username:', bg=BLUE, font=(FONT_NAME, 12))
 name_text_ms.grid(column=1, row=9)
 
-name_entry_ms = Entry(main_screen)
 name_entry_ms.grid(column=2, row=9, columnspan=2)
 
 phone_text_ms = Label(main_screen, text='Phone Number:', bg=BLUE, font=(FONT_NAME, 12))
 phone_text_ms.grid(column=1, row=10)
 
-phone_entry_ms = Entry(main_screen)
 phone_entry_ms.grid(column=2, row=10, columnspan=2)
 
 password_text_ms = Label(main_screen, text='Password:', bg=BLUE, font=(FONT_NAME, 12))
 password_text_ms.grid(column=1, row=11)
 
-password_entry_ms = Entry(main_screen)
 password_entry_ms.grid(column=2, row=11)
 
 password_gen_button_ms = Button(main_screen, text='Random Pass')
