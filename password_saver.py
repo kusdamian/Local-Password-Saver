@@ -5,7 +5,6 @@ The main file of a local password saver app in which all the GUI elements are fo
 import buttons_aux as ba
 from frame import *
 
-
 # =============== login Screen =================== #
 # logo
 canvas_ls = Canvas(login_screen, width=200, height=190, bg=BLUE, highlightthickness=0)
@@ -40,7 +39,6 @@ create_acc_text_ls.grid(column=1, row=7)
 create_acc_button_ls = Button(login_screen, text='Click Here', highlightthickness=0, font=(FONT_NAME, 8), command=ba.create_acc_button_click_here)
 create_acc_button_ls.grid(column=2, row=7)
 
-
 # =============== Create Screen =================== #
 # logo
 canvas_cs = Canvas(create_screen, width=200, height=190, bg=BLUE, highlightthickness=0)
@@ -74,9 +72,9 @@ blankspace1_cs.grid(column=1, row=6)
 back_button = Button(create_screen, text='Return', highlightthickness=0, font=(FONT_NAME, 8), command=ba.return_button)
 back_button.grid(column=1, row=7)
 
-create_acc_button = Button(create_screen, text='Create Account', highlightthickness=0, font=(FONT_NAME, 8), command=ba.create_account_button)
+create_acc_button = Button(create_screen, text='Create Account', highlightthickness=0, font=(FONT_NAME, 8),
+                           command=ba.create_account_button)
 create_acc_button.grid(column=2, row=7)
-
 
 # =============== Main Screen =================== #
 # logo
@@ -84,12 +82,11 @@ canvas_ms = Canvas(main_screen, width=200, height=190, bg=BLUE, highlightthickne
 canvas_ms.create_image(100, 95, image=logo)
 canvas_ms.grid(column=2, row=1)
 
-title_ms = Label(main_screen, text='Hello {Name Here}', bg=BLUE, font=(FONT_NAME, 15, 'bold'))
 title_ms.grid(column=2, row=2)
 
-logout_button_ms = Button(main_screen, text='Logout', highlightthickness=0, font=(FONT_NAME, 8), command=ba.logout_button)
+logout_button_ms = Button(main_screen, text='Logout', highlightthickness=0, font=(FONT_NAME, 8),
+                          command=ba.logout_button)
 logout_button_ms.grid(column=3, row=1, sticky='nw')
-
 
 # Search Section
 search_text_ms = Label(main_screen, text='Search Password:', bg=BLUE, font=(FONT_NAME, 12))
@@ -135,11 +132,12 @@ password_entry_ms.grid(column=2, row=11)
 password_gen_button_ms = Button(main_screen, text='Random Pass')
 password_gen_button_ms.grid(column=3, row=11)
 
-save_button_ms = Button(main_screen, text='Save Password', highlightthickness=0, font=(FONT_NAME, 8))
+save_button_ms = Button(main_screen, text='Save Password', highlightthickness=0, font=(FONT_NAME, 8), command=ba.save_password_button)
 save_button_ms.grid(column=2, row=12)
 
 # initialize first screen
 login_screen.pack()
+# main_screen.pack()
 
 if __name__ == '__main__':
     root.mainloop()

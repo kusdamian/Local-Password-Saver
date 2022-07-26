@@ -3,6 +3,7 @@ An auxiliary file containing everything the GUI buttons need to function
 """
 
 import frame
+from pathlib import Path
 import os
 
 
@@ -12,7 +13,6 @@ def search_folder(filename):
         for Files in files:
             try:
                 found = Files.find(filename)
-                # print(found)
                 if found != -1:
                     return True
             except:
@@ -37,6 +37,7 @@ def create_account_button():
                 try:
                     user = open(f'Users/{frame.name_entry_cs.get()}.txt', 'x')
                     user.write(f'{frame.password_entry_cs.get()}')
+                    # user.write(f'{frame.password_entry_cs.get()}|{frame.name_entry_cs.get()}')
                     user.close()
                     return_button()
                 except FileExistsError:
@@ -59,11 +60,12 @@ def return_button():
 def login_button():
     if search_folder(f'{frame.name_entry_ls.get()}.txt') and len(frame.name_entry_ls.get()) > 0:
         print('File Found')
-        user = open(f'Users/{frame.name_entry_ls.get()}.txt', 'r')
+        user = open(f'Users/{frame.name_entry_ls.get()}.txt', 'r+')
         password = user.readline()
         if frame.password_entry_ls.get() == password:
             frame.login_screen.pack_forget()
             frame.main_screen.pack()
+            frame.title_ms.config(text=f'Hello {Path(user.name).stem}')
         else:
             print('Incorrect Password')
     else:
@@ -74,3 +76,17 @@ def login_button():
 def logout_button():
     frame.main_screen.pack_forget()
     frame.login_screen.pack()
+
+
+def save_password_button():
+    if not frame.website_entry_ms.get().isspace() and len(frame.website_entry_ms.get()) > 0:
+        if not frame.password_entry_ms.get().isspace() and len(frame.password_entry_ms.get()) > 0:
+            if (not frame.email_entry_ms.get().isspace() and len(frame.email_entry_ms.get()) > 0) or \
+                    (not frame.name_entry_ms.get().isspace() and len(frame.name_entry_ms.get()) > 0):
+                print('Password is saved')
+            else:
+                print('You must enter either an Email or Username (or both).')
+        else:
+            print('You must enter a password.')
+    else:
+        print('You must enter a website.')
