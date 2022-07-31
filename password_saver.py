@@ -5,6 +5,7 @@ The main file of a local password saver app in which all the GUI elements are fo
 import buttons_aux as ba
 from frame import *
 
+
 # =============== login Screen =================== #
 # logo
 canvas_ls = Canvas(login_screen, width=200, height=190, bg=BLUE, highlightthickness=0)

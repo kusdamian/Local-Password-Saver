@@ -35,10 +35,10 @@ def create_account_button():
         if not frame.password_entry_cs.get().isspace() and len(frame.password_entry_cs.get()) > 0:
             if frame.password_entry_cs.get() == frame.password_entry_confirm_cs.get():
                 try:
-                    user = open(f'Users/{frame.name_entry_cs.get()}.txt', 'x')
-                    user.write(f'{frame.password_entry_cs.get()}')
-                    # user.write(f'{frame.password_entry_cs.get()}|{frame.name_entry_cs.get()}')
-                    user.close()
+                    user_create = open(f'Users/{frame.name_entry_cs.get()}.txt', 'x')
+                    user_create.write(f'{frame.password_entry_cs.get()}')
+                    user_create.write(' \n')
+                    user_create.close()
                     return_button()
                 except FileExistsError:
                     print('file already exists')           # Print Statements need to be Pop up windows
@@ -60,20 +60,24 @@ def return_button():
 def login_button():
     if search_folder(f'{frame.name_entry_ls.get()}.txt') and len(frame.name_entry_ls.get()) > 0:
         print('File Found')
-        user = open(f'Users/{frame.name_entry_ls.get()}.txt', 'r+')
-        password = user.readline()
-        if frame.password_entry_ls.get() == password:
+        frame.user = f'Users/{frame.name_entry_ls.get()}.txt'
+        user_defined = open(frame.user, 'r')
+        password_temp = user_defined.readlines()
+        password = password_temp[0].split()
+        if frame.password_entry_ls.get() == password[0]:
             frame.login_screen.pack_forget()
             frame.main_screen.pack()
-            frame.title_ms.config(text=f'Hello {Path(user.name).stem}')
+            frame.title_ms.config(text=f'Hello {Path(user_defined.name).stem}')
+            user_defined.close()
         else:
             print('Incorrect Password')
+            user_defined.close()
     else:
         print('No user found')
 
 
-# Do not forget to close the open file here with user.close()
 def logout_button():
+    frame.user = None
     frame.main_screen.pack_forget()
     frame.login_screen.pack()
 
@@ -83,7 +87,13 @@ def save_password_button():
         if not frame.password_entry_ms.get().isspace() and len(frame.password_entry_ms.get()) > 0:
             if (not frame.email_entry_ms.get().isspace() and len(frame.email_entry_ms.get()) > 0) or \
                     (not frame.name_entry_ms.get().isspace() and len(frame.name_entry_ms.get()) > 0):
+                user_defined = open(frame.user, 'a')
+                user_defined.write(
+                    f'{frame.website_entry_ms.get()}|{frame.email_entry_ms.get()}|{frame.name_entry_ms.get()}|'
+                    f'{frame.phone_entry_ms.get()}|{frame.password_entry_ms.get()}|\n'
+                )
                 print('Password is saved')
+                user_defined.close()
             else:
                 print('You must enter either an Email or Username (or both).')
         else:

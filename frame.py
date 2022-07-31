@@ -3,6 +3,8 @@ from tkinter import *
 BLUE = '#DFF4FA'
 FONT_NAME = "Courier"
 
+user = None
+
 # Main Window
 root = Tk()
 root.title('Password Saver')
